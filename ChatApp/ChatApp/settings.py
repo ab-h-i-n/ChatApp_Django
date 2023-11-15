@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'chat'
 ]
 
-ASGI_APPLICATION = 'ChatApp.asgi.application'
+
 
 CHANNEL_LAYERS = {
 	"default": {
@@ -79,7 +79,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'ChatApp.wsgi.application'
-
+ASGI_APPLICATION = 'ChatApp.asgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
