@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-
+import dj_database_url
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -83,13 +84,21 @@ WSGI_APPLICATION = 'ChatApp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'chatapp',
+#         'USER': 'abhin',
+#         'PASSWORD': 'abhin',
+#         'HOST': 'localhost',
+#         'PORT': '',
+#     }
+# }
 
+
+DATABASES = {
+    'default': dj_database_url.parse('postgres://chats_1307_user:EVsAGsq2ZukjdZH00T5wpKvF4weJsodC@dpg-cla1t3hm6hds73de8r10-a.singapore-postgres.render.com/chats_1307')
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
