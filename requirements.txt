@@ -3,7 +3,7 @@ asgiref==3.7.2
 attrs==23.1.0
 autobahn==23.1.2
 Automat==22.10.0
-cffi==1.16.0
+cffi==1.15.0
 channels==4.0.0
 click==8.1.7
 constantly==23.10.4
