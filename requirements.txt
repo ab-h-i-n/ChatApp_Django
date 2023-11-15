@@ -1,7 +1,8 @@
+pip == 23.3.1
 anyio<=4.0.0
 asgiref==3.7.2
 attrs==23.1.0
-autobah<=23.6.2
+autobah==23.6.2
 Automat==22.10.0
 cffi==1.16.0
 channels==4.0.0
