@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Page</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">Chat-Box</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-danger" href="{% url 'logout-user' %}">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="bg-secondary p-3" style="min-height: 100vh;" id="main">
+    <!-- Your page content goes here -->
+    {% for chat_message in chat_messages %}
+    <div class="container-sm rounded-3 mb-3 p-3 bg-dark text-wrap m-0" style="max-width: max-content;" id="message">
+        {% if chat_message.username == 'abhin' %}
+            <div class="text-info fw-bold mb-1">{{ chat_message.username }}</div>
+        {% else %}
+            <div class="text-warning fw-bold mb-1">{{ chat_message.username }}</div>
+        {% endif %}
+        <div class="text-white mb-2">{{ chat_message.message }}</div>
+        <div class="fs-6 text-end text-white-50">{{ chat_message.timestamp }}</div>
+    </div>
+    {% endfor %}
+  
+    <!-- Add more message containers as needed -->
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="container fixed-bottom p-3">
+            <div class="input-group mb-3">
+                <input type="text" name="message" class="form-control" placeholder="Type your message" aria-label="Type your message" aria-describedby="button-addon2">
+                <button class="btn bg-dark ms-1 text-secondary" type="submit" id="button-addon2">Send</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>

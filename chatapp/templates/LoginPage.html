@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+</head>
+<body style="overflow: hidden;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="">Chat-Box</a>
+        </div>
+    </nav>
+    <div class="d-flex align-items-center justify-content-center vh-100 m-0 bg-secondary p-5">
+        <div class="login-form bg-dark p-3 text-white rounded-3 pb-5">
+            <form method="post">
+                {% csrf_token %}
+                <h1 class="text-center mb-3 mt-5">Login</h1>
+                {% bootstrap_form form %}
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
