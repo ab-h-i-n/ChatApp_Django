@@ -1,14 +1,14 @@
 from pathlib import Path
 import dj_database_url
-import os
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get("SECRET_KEY") #NEW
+SECRET_KEY = "helloworld"
 
-DEBUG = os.environ.get("DEBUG","False").lower() == "true" #NEW
+DEBUG = False
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ") #NEW
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -58,9 +58,7 @@ WSGI_APPLICATION = 'chatapp.wsgi.application'
 #     }
 # }
 
-
-database_url = os.environ.get("DATABASE_URL")#NEW
-DATABASES["default"] = dj_database_url.parse(database_url) #NEW
+DATABASES["default"] = dj_database_url.parse("postgres://chats_1307_user:EVsAGsq2ZukjdZH00T5wpKvF4weJsodC@dpg-cla1t3hm6hds73de8r10-a.singapore-postgres.render.com/chats_1307") 
 
 #'postgres://chats_1307_user:EVsAGsq2ZukjdZH00T5wpKvF4weJsodC@dpg-cla1t3hm6hds73de8r10-a.singapore-postgres.render.com/chats_1307'
 
