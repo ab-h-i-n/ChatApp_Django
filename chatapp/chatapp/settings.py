@@ -1,13 +1,14 @@
 from pathlib import Path
 import dj_database_url
+import os
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = 'django-insecure-6&l7a)@@la=#+*7v2+gqr1mi6b_&*%9jywzile9^x*-(hii-99'
+SECRET_KEY = os.environ.get("SECRET_KEY") #NEW
 
-DEBUG = True
+DEBUG = os.environ.get("DEBUG","False").lower() == "true" #NEW
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ") #NEW
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -57,9 +58,11 @@ WSGI_APPLICATION = 'chatapp.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': dj_database_url.parse('postgres://chats_1307_user:EVsAGsq2ZukjdZH00T5wpKvF4weJsodC@dpg-cla1t3hm6hds73de8r10-a.singapore-postgres.render.com/chats_1307')
-}
+
+database_url = os.environ.get("DATABASE_URL")#NEW
+DATABASES["default"] = dj_database_url.parse(database_url) #NEW
+
+#'postgres://chats_1307_user:EVsAGsq2ZukjdZH00T5wpKvF4weJsodC@dpg-cla1t3hm6hds73de8r10-a.singapore-postgres.render.com/chats_1307'
 
 AUTH_PASSWORD_VALIDATORS = [
     {
